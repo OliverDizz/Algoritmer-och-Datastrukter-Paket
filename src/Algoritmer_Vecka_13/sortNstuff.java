@@ -1,7 +1,5 @@
 package Algoritmer_Vecka_13;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Arrays;
 import java.util.Random;
 
@@ -30,7 +28,10 @@ public class sortNstuff {
         System.out.println(message);
 
         int[] test = null;
-        int[] merged2 = mergeArrays(a, test);
+        int[] merged2 = mergeArrays(a, b);
+
+
+
 
 
 
