@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 import java.text.DecimalFormat;
 import java.util.Scanner;
 
-public class bokstav_frekvens {
+public class bokstav_frekvens_5 {
     public static void main(String[] args) throws FileNotFoundException {
         Scanner scan = new Scanner(new File("src/vecka_13_Javagrunder_genomgång/lorem_ipsum.txt"));
         String alfabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

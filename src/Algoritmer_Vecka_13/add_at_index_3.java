@@ -2,7 +2,7 @@ package Algoritmer_Vecka_13;
 
 import java.util.Arrays;
 
-public class add_at_index {
+public class add_at_index_3 {
     public static void main(String[] args) {
         //index för stor
         int[] test = {1, 2, 3, 4, 5};
