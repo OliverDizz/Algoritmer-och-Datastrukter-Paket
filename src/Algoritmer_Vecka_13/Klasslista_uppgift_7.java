@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Klasslista_uppgift {
+public class Klasslista_uppgift_7 {
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<String> list = new ArrayList<>();
         File fil = new File("/Users/oliverdizdarevic/IdeaProjects/Algoritmer och Datastrukturer Paket/src/Algoritmer_Vecka_13/KlasslistaFixed.txt");

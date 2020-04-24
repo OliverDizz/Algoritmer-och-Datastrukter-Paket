@@ -3,7 +3,7 @@ package Algoritmer_Vecka_13;
 import java.util.Arrays;
 import java.util.Random;
 
-public class sortNstuff {
+public class sortNstuff_6 {
     public static void main(String[] args) {
         int[] a = {2,5,7};
         int[] b = {1,3};
