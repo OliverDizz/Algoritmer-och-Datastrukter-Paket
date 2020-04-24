@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class Klasslista_uppgift {
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList<String> list = new ArrayList<>();
-        File fil = new File("/Users/oliverdizdarevic/IdeaProjects/Algoritmer och Datastrukturer Paket/src/Algoritmer_Vecka_13/Klasslista.txt");
+        File fil = new File("/Users/oliverdizdarevic/IdeaProjects/Algoritmer och Datastrukturer Paket/src/Algoritmer_Vecka_13/KlasslistaFixed.txt");
         Scanner input = new Scanner(fil);
 
         //fills ArrayList with names from file
