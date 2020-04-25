@@ -1,5 +1,4 @@
 package Algoritmer_Vecka_14;
-import java.util.*;
 /*
 UPPGIFT 1 ----------
  */
@@ -120,9 +119,6 @@ public class SimpleDataStructure {
         myfriends.add("E");
         myfriends.add("G");
 
-
-       // myfriends.remove("Edam");
-
         myfriends.printFriends();
         System.out.println();
         myfriends.addSort("H");
@@ -130,10 +126,6 @@ public class SimpleDataStructure {
         myfriends.addSort("B");
 
         myfriends.printFriends();
-
-
-
-
 
     }
 
