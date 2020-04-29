@@ -6,46 +6,71 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
     private AnyType[] list;
     private int count;
+    private int maxSize;
 
     public MyArrayList() {
-        list = (AnyType[]) new Object[10];
+        maxSize = 10;
         count = 0;
+        list = (AnyType[]) new Object[maxSize];
+
     }
 
+    /* Is not used because MyArrayList is dynamic, so no specified size is used
     public MyArrayList(int initialCapacity) {
         list = (AnyType[]) new Object[initialCapacity];
     }
 
+     */
+
     /*Appends the specified element to the end of this list.*/
-
+    /*
     public boolean add(AnyType o) {
-
+        if (count == maxSize) {
+            maxSize = maxSize * 2;
+            AnyType[] temp = new Object[maxSize];
+            for (int i = 0; i < count; i++) {
+                temp[i] = list[i];
+            }
+            list = temp;
+        }
+        list[count] = o;
         return true;
     }
-
+    */
     /**
      * tests if the specified element is a component of this list
      */
     public boolean contains(AnyType o) {
-        return true;
-
+        for (int i = 0; i < count; i++) {
+            if (list.equals(o)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
      * returns the component at the specified index
      */
     public AnyType get(int index) {
-        return null;
+        if (index > (maxSize - 1) || index < 0) {
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        } else {
+            return list[index];
+        }
     }
 
     /**
      * Search for the first occurrence of the given argument testing for the equality using
      * equals method
      */
-    public int indexOf(AnyType o) {
-        return -1;
-    }
+  /*  public int indexOf(AnyType o) {
+        for (int i = 0; i < count; i++) {
 
+        }
+    }
+    */
+    
     /**
      * tests if this list has no components
      */
@@ -65,7 +90,7 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
      * returns the number of components in this list
      */
     public int size() {
-        return -1;
+        return count;
     }
 
     /**
