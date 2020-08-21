@@ -1,5 +1,7 @@
 package Algoritmer_Vecka_14;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.*;
 
 public class MyArrayList<AnyType> implements Iterable<AnyType> {
@@ -15,34 +17,45 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
     }
 
-    /* Is not used because MyArrayList is dynamic, so no specified size is used
+
+
     public MyArrayList(int initialCapacity) {
         list = (AnyType[]) new Object[initialCapacity];
     }
 
+
+
+    /**
+     * Appends the specified element to the end of this list.
      */
 
-    /*Appends the specified element to the end of this list.*/
-    /*
     public boolean add(AnyType o) {
-        if (count == maxSize) {
+        if (o == null){
+            System.out.println("Exception: Element far ej vara null");
+            return false;
+        }
+        if (count == maxSize) {                            //doubles list when true
             maxSize = maxSize * 2;
-            AnyType[] temp = new Object[maxSize];
+            AnyType[] temp = (AnyType[]) new Object[maxSize];
             for (int i = 0; i < count; i++) {
                 temp[i] = list[i];
             }
             list = temp;
+            list[count] = o;
+            count++;
+            return true;
         }
         list[count] = o;
+        count++;
         return true;
     }
-    */
+
     /**
      * tests if the specified element is a component of this list
      */
     public boolean contains(AnyType o) {
         for (int i = 0; i < count; i++) {
-            if (list.equals(o)) {
+            if (list[i].equals(o)) {
                 return true;
             }
         }
@@ -64,18 +77,26 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
      * Search for the first occurrence of the given argument testing for the equality using
      * equals method
      */
-  /*  public int indexOf(AnyType o) {
+    public int indexOf(AnyType o) {
         for (int i = 0; i < count; i++) {
-
+            if (list[i].equals(o)){
+                return i;
+            }
         }
+        return -1;
     }
-    */
+
     
     /**
      * tests if this list has no components
      */
     public boolean isEmpty() {
-        return true;
+        if (count == 0){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -83,7 +104,17 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
      * if the list contains the
      */
     public boolean remove(AnyType o) {
-        return true;
+        for (int i = 0; i < count; i++) {
+            if (list[i].equals(o)){
+                list[i] = null;
+                for (int j = i; j < count-1; j++) {
+                    list[j] = list[j+1];
+                }
+                count--;
+                return true;
+            }   
+        }
+        return false;
     }
 
     /**
@@ -97,12 +128,27 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
      * returns an array containing all elements in this list in the correct order
      */
     public Object[] toArray() {
-        return null;
+        if (count == 0){
+            AnyType[] temp  = list.clone();
+            temp = null;
+            return temp;
+        }
+        else{
+            return list;
+        }
+    }
+
+    public void print() {
+        for (int i = 0; i < count; i++) {
+            String item = (String) list[i];
+            System.out.println(item);
+        }
     }
 
     public Iterator<AnyType> iterator() {
         // return object ArrayListIterator
-        return null;
+        Iterator<AnyType> item = new ArrayListIterator<AnyType>(list, count);
+        return item;
     }
 
 }
