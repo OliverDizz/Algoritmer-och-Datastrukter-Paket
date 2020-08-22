@@ -12,7 +12,7 @@ package Algoritmer_Vecka_14;
 import java.util.ArrayList;
 import java.util.Comparator;
 
-public class Account implements Comparable {
+public class Account implements Comparable<Account> {
     private double balance;
     private String acctNum;
 
@@ -105,5 +105,6 @@ public class Account implements Comparable {
     public int compareTo(Account a) {
             return (int)(this.balance - a.balance);
         }
+
 
 }

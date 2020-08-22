@@ -4,7 +4,7 @@ import org.w3c.dom.ls.LSOutput;
 
 import java.util.*;
 
-public class MyArrayList<AnyType> implements Iterable<AnyType> {
+public class MyArrayList<AnyType> implements Iterable<AnyType>{
 
     private AnyType[] list;
     private int count;
@@ -147,8 +147,16 @@ public class MyArrayList<AnyType> implements Iterable<AnyType> {
 
     public Iterator<AnyType> iterator() {
         // return object ArrayListIterator
-        Iterator<AnyType> item = new ArrayListIterator<AnyType>(list, count);
+        Iterator<AnyType> item = new ArrayListIterator<>(list, count);
         return item;
+    }
+
+    public String toString(){
+        String a = "";
+        for (int i = 0; i < count; i++) {
+            a = a + list[i].toString();
+        }
+        return a;
     }
 
 }
