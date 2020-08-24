@@ -1,9 +1,7 @@
 package Algoritmer_Vecka_14;
 
 import java.io.*;
-import java.sql.SQLOutput;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.Scanner;
 
@@ -44,59 +42,46 @@ public class Land_main {
         */
 
         Scanner cmd = new Scanner(new InputStreamReader(System.in));
-        System.out.println("Press enter to continue");
         String filepath = "src/Algoritmer_Vecka_14/";
-        String filename;
-        while (cmd.hasNextLine()) {
-            String option =
+
+        do {
             System.out.println("Select which method to sort, choose between: name, population or size");
-            if (cmd.next().toLowerCase().equals("name")) {
-                Collections.sort(list, new NameComparator());
+            String option = cmd.next().toLowerCase();
+            String filename;
+            if ("name".equals(option)) {
+                list.sort(new NameComparator());
                 Iterator iterate = list.iterator();
                 filename = "Sorted_by_Name.txt";
-                FileWriter writer = new FileWriter(new File(filepath + filename));
-                while (iterate.hasNext()) {
-                    writer.write(iterate.next().toString());
-                    writer.write('\n');
-                }
-                writer.close();
-                cmd.close();
-                System.out.println("Wrote file " + filename + " successfully");
+                WriteToFile(cmd, filepath, filename, iterate);
                 break;
-
-            } else if (cmd.nextLine().toLowerCase().equals("population")) {
-                Collections.sort(list, new PopulationComparator());
+            } else if ("population".equals(option)) {
+                list.sort(new PopulationComparator());
                 Iterator iterate = list.iterator();
                 filename = "Sorted_by_Population.txt";
-                FileWriter writer = new FileWriter(new File(filepath + filename));
-                while (iterate.hasNext()) {
-                    writer.write(iterate.next().toString());
-                    writer.write('\n');
-                }
-                writer.close();
-                cmd.close();
-                System.out.println("Wrote file " + filename + " successfully");
+                WriteToFile(cmd, filepath, filename, iterate);
                 break;
-
-            } else if (cmd.nextLine().toLowerCase().equals("size")) {
-                Collections.sort(list, new SizeComparator());
+            } else if ("size".equals(option)) {
+                list.sort(new SizeComparator());
                 Iterator iterate = list.iterator();
                 filename = "Sorted_by_Size.txt";
-                FileWriter writer = new FileWriter(new File(filepath + filename));
-                while (iterate.hasNext()) {
-                    writer.write(iterate.next().toString());
-                    writer.write('\n');
-                }
-                writer.close();
-                cmd.close();
-                System.out.println("Wrote file " + filename + " successfully");
+                WriteToFile(cmd, filepath, filename, iterate);
                 break;
-
             } else {
-                System.out.println("Please choose one of the options");
+                System.out.println("Please choose one of the options, press enter to continue");
             }
 
 
+        } while (cmd.hasNextLine());
+    }
+
+    private static void WriteToFile(Scanner cmd, String filepath, String filename, Iterator iterate) throws IOException {
+        FileWriter writer = new FileWriter(new File(filepath + filename));
+        while (iterate.hasNext()) {
+            writer.write(iterate.next().toString());
+            writer.write('\n');
         }
+        writer.close();
+        cmd.close();
+        System.out.println("Wrote file " + filename + " successfully");
     }
 }
